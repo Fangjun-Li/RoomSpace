@@ -1,6 +1,6 @@
 # RoomSpace 
 
-[**🌐 Homepage**](https://roomspace-benchmark.web.app/) | [**🤗 Dataset**](https://huggingface.co/datasets/Fangjun/RoomSpace) | | [**📖 arXiv**](https://arxiv.org/abs/2405.15064) | [**🕹️ Colab**](https://colab.research.google.com/assets/colab-badge.svg)
+[**🌐 Homepage**](https://roomspace-benchmark.web.app/) | [**🤗 Dataset**](https://huggingface.co/datasets/Fangjun/RoomSpace) | [**📖 arXiv**](https://arxiv.org/abs/2405.15064) | [**🕹️ Colab**](https://colab.research.google.com/drive/1fAK8J1UHAjMm-mNVsuzIbEZd-SZG6bX-?usp=sharing)
 
 
 # RoomSpace

@@ -19,12 +19,10 @@ This section guides you through setting up and running the room scene generation
 
 1. Install ProcTHOR.
    Detailed installation instructions can be found on the [ProcTHOR GitHub repository](https://github.com/allenai/procthor).
-2. Replace and Add Files to Customize Room Generation
-   Locate the `procthor` folder in your installation directory. 
+2. Locate the `procthor` folder in your installation directory, replace and add files to customize room generation.
    - Replace the corresponding files under `./procthor/procthor/generation` with the files from this repository in the same directory.
    - Copy the `generate_room.py` file under `./procthor/scripts` in this repository to the corresponding folder in the downloaded ProcTHOR directory.
-3. Generate Room Scenes
-   Navigate to the `./procthor` directory and run the example script to generate room scenes. Use the following command:
+4. Navigate to the `./procthor` directory and run the example script to generate room scenes. Use the following command:
    ```bash
    python scripts/generate_room.py
    ```
@@ -34,7 +32,7 @@ This section guides you through setting up and running the room scene generation
 **Check the Generated Meta Room Configuration Files**: After the script completes, check the `Meta/SD-100` folder. You should find the generated `.json` files for each room containing the configuration details.
 
 ## 📷 Image & Video Generation Code
-After generating the room configurations, you can create images and videos to visualize the rooms. Below are the steps to generate top-down views, robot perspective views, and videos.
+After generating the room configurations, you can create images and videos to visualize the rooms. Below are the steps to generate top-down view images, robot perspective view images, and videos.
 
 - To get a top-down view image of each room:
   ```bash

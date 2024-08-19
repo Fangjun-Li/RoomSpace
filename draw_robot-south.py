@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 18, 2024
+
+@author: Fangjun
+"""
+
 import os
 import json
 from ai2thor.controller import Controller
@@ -52,7 +60,7 @@ def cache_exists(file_path):
 
 def main():
     meta_folder = './Meta/SD-100'  # Replace with the path to your 'meta' folder
-    robot_south_output_folder = './Data/SD-100/Image/robot_south'  
+    robot_south_output_folder = './Data/SD-100/Image/robot-south'  
 
     os.makedirs(robot_south_output_folder, exist_ok=True)  # Ensure the output folder exists
     controller = None

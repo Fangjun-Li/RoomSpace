@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 18, 2024
+
+@author: Fangjun
+"""
+
 import os
 import json
 from ai2thor.controller import Controller

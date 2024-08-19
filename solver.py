@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 18, 2024
+
+@author: Fangjun
+"""
+
 from constraint import Problem
 import time
 import numpy as np

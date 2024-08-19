@@ -48,6 +48,58 @@ To generate images of the room, follow these steps:
   python draw_robot-south.py
   ```
 
+## 💻 Logical Reasoner
+The `solver.py` module provides functions for solving spatial relationship constraints between objects within a grid of configurable size. 
+### How to Use
+
+1. **Set the Domain Size:**
+   - Define the size of the grid (e.g., `(12, 12)` for a 12x12 grid) when calling `solve_single_candidate` or `solve_all_candidates`.
+
+2. **Create Test Data:**
+   - Define facts and queries for the relationships between objects within the grid. This data is passed into the `example` dictionary.
+
+3. **Run the Solver:**
+   - Use `solve_single_candidate` to check if a specific relationship holds true or `solve_all_candidates` to find all possible relationships.
+
+### Example Usage
+
+Here is how you might use the module in another script:
+
+```python
+from solver import solve_single_candidate, solve_all_candidates
+
+# Set the domain size
+domain_size = (12, 12)
+
+# Define facts and queries
+facts = [
+    ("bed", "NER", "room"),
+    ("dresser", "SWR", "room"),
+    ("house plant", "ER", "room"),
+    ("dining table", "CR", "room"),
+    ("chair", "CR", "room"),
+    ("bed", "NE", "dresser"),
+    ("dresser", "SW", "house plant"),
+    ("house plant", "SE", "dining table"),
+    ("dining table", "N", "chair")
+] 
+
+query = [
+    ("bed", "chair")
+]
+
+example = {'example_id': 0, "facts": facts, "query": query}
+
+# Solving for a specific candidate relationship
+yn_relation = "south-west"
+solvable_answer, time_taken = solve_single_candidate(example, yn_relation, domain_size)
+print(yn_relation, ":", solvable_answer, f"Time: {time_taken:.4f}s")
+
+# Solving for all candidate relationships
+solvable_relations, time_taken = solve_all_candidates(example, domain_size)
+print("All Candidates:", solvable_relations, f"Time: {time_taken:.4f}s")
+```
+
 ## 📃 Text Generation Code
 
 

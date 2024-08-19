@@ -12,41 +12,46 @@
 <br/>
 
 
-
-
-
-
-## 🔍 Overview
-
 This repository contains the code used to generate the dataset for the RoomSpace benchmark, as introduced in the IJCAI-24 paper, [Reframing Spatial Reasoning Evaluation in Language Models: A Real-World Simulation Benchmark for Qualitative Reasoning](https://arxiv.org/pdf/2405.15064.pdf).
 
 ## 🏘️ Room Scene Generation Code
-Our room generation code is based on [ProcTHOR](https://procthor.allenai.org/). Several modifications are required to generate room scenes effectively:
+This section guides you through setting up and running the room scene generation code, which is based on [ProcTHOR](https://procthor.allenai.org/). 
 
-1. Install ProcTHOR by following the instructions provided [here](https://github.com/allenai/procthor).
-2. Locate the `procthor` folder, then:
+1. Install ProcTHOR.
+   Detailed installation instructions can be found on the [ProcTHOR GitHub repository](https://github.com/allenai/procthor).
+2. Replace and Add Files to Customize Room Generation
+   Locate the `procthor` folder in your installation directory. 
    - Replace the corresponding files under `./procthor/procthor/generation` with the files from this repository in the same directory.
    - Copy the `generate_room.py` file under `./procthor/scripts` in this repository to the corresponding folder in the downloaded ProcTHOR directory.
-3. In the `./procthor` directory, run the example script to generate rooms by executing the following command:
+3. Generate Room Scenes
+   Navigate to the `./procthor` directory and run the example script to generate room scenes. Use the following command:
    ```bash
    python scripts/generate_room.py
    ```
+   - Save path: By default, the script generates rooms for the SD-100 dataset. You can customize the `save_path` variable in the script to specify where the generated room configuration files should be saved.
+   - Number of rooms: Adjust the loop `for i in range(0, 100)` to change the number of rooms generated.
 
-   The default setting is for generating SD-100. You can modify the `save_path` variable and adjust the `for i in range(0, 100)` loop to specify your desired save path and the number of rooms you want to generate.
+**Check the Generated Meta Room Configuration Files**: After the script completes, check the `Meta/SD-100` folder. You should find the generated `.json` files for each room containing the configuration details.
 
-## 📷 Image Generation Code
+## 📷 Image & Video Generation Code
+After generating the room configurations, you can create images and videos to visualize the rooms. Below are the steps to generate top-down views, robot perspective views, and videos.
 
-To generate images of the room, follow these steps:
-
-- To get a top-down view image of the room, run the following command:
+- To get a top-down view image of each room:
   ```bash
   python draw_top-down.py
   ```
 
-- To get a view image of the room from a robot positioned at the south door, run the following command:
+- To generate images from a robot's perspective at the south door of each room:
   ```bash
   python draw_robot-south.py
   ```
+**Check the Generated Images**: After the script completes, check the `Data/SD-100/Image/top-down` and `Data/SD-100/Image/robot-south` folder. You should see the generated `.jpg` image files corresponding to each room JSON file.
+
+- To create videos showing a 360-degree view of each room:
+  ```bash
+  python create_video.py
+  ```
+**Check the Generated Videos**: After the script completes, check the `Data/SD-100/Video/` folder. You should find the generated `.mp4` video files, with each video corresponding to a room JSON file.
 
 ## 💻 Logical Reasoner
 The `solver.py` module provides functions for solving spatial relationship constraints between objects within a grid of configurable size. 

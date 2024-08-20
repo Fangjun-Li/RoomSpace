@@ -1,7 +1,6 @@
 <div align="center">
   <h1>🏠 RoomSpace Benchmark</h1> 
   <p>
-    🌐 <a href="https://roomspace-benchmark.web.app/">Homepage</a> • 
     🤗 <a href="https://huggingface.co/datasets/Fangjun/RoomSpace">Hugging Face</a> • 
     📁 <a href="https://archive.researchdata.leeds.ac.uk/1293/">Dataset</a> • 
     📙 <a href="https://arxiv.org/abs/2405.15064">Paper</a>

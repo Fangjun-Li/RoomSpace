@@ -51,18 +51,26 @@ After generating the room configurations, you can create images and videos to vi
   ```
 **Check the Generated Videos**: After the script completes, check the `Data/SD-100/Video/` folder. You should find the generated `.mp4` video files, with each video corresponding to a room JSON file.
 
-## 💻 Logical Reasoner
-The `solver.py` module provides functions for solving spatial relationship constraints between objects within a grid of configurable size. 
+## 🧠 Logical Reasoner
+Our CSP reasoner is based on the [Python constraint module](https://pypi.org/project/python-constraint/). To use it, first install the module by running:
+
+```bash
+pip install python-constraint
+```
+
+The `solver.py` script provides functions for solving spatial relationship constraints between objects within a configurable grid size.
+
+
 ### How to Use
 
 1. **Set the Domain Size:**
-   - Define the size of the grid (e.g., `(12, 12)` for a 12x12 grid) when calling `solve_single_candidate` or `solve_all_candidates`.
+   Define the size of the grid (e.g., `(12, 12)` for a 12x12 grid) when calling `solve_single_candidate` or `solve_all_candidates`.
 
 2. **Create Test Data:**
-   - Define facts and queries for the relationships between objects within the grid. This data is passed into the `example` dictionary.
+   Define facts and queries for the relationships between objects within the grid. This data is passed into the `example` dictionary.
 
 3. **Run the Solver:**
-   - Use `solve_single_candidate` to check if a specific relationship holds true or `solve_all_candidates` to find all possible relationships.
+   Use `solve_single_candidate` to check if a specific relationship holds true or `solve_all_candidates` to find all possible relationships.
 
 ### Example Usage
 
@@ -105,13 +113,39 @@ print("All Candidates:", solvable_relations, f"Time: {time_taken:.4f}s")
 
 ## 📃 Text Generation Code
 
+To run the script with the desired parameters, use the following command in your terminal:
 
+```bash
+python generate_vary_m_n.py --data_version SD-1K --test_num 1000 --domain_size (9, 9) --n_range [4] --m_range [3]
+```
+### Setting args
 
+   - Save path: By default, the script generates rooms for the SD-100 dataset. You can customize the `save_path` variable in the script to specify where the generated room configuration files should be saved.
+   - Number of rooms: Adjust the loop `for i in range(0, 100)` to change the number of rooms generated.
+
+### Argument Descriptions
+
+- **`--data_version`** (`str`, default: `'SD-100'`):
+  - Specifies the version of the dataset to use. This can be one of the predefined versions such as `SD-100`, `SD-1K`, or `SD-10k`.
+  
+- **`--test_num`** (`int`, default: `100`):
+  - Indicates the number of test cases the script should process. Adjust this value to process more or fewer test cases in a single run.
+  
+- **`--test_num_start`** (`int`, default: `0`):
+  - Sets the starting index for processing test cases. This is useful if you want to skip some initial test cases and start processing from a specific index.
+  
+- **`--domain_size`** (`tuple`, default: `(12, 12)`):
+  - Defines the size of the domain grid. This should be specified as a tuple of two integers representing the width and height of the grid.
+  
+- **`--n_range`** (`list`, default: `[5]`):
+  - Specifies the range of numbers indicating the number of objects to consider in the test cases. This can be a single number or a list of numbers.
+  
+- **`--m_range`** (`list`, default: `[4,5,6,7,8,9]`):
+  - Defines the range of numbers indicating the number of object pairs to consider. This should be provided as a list of numbers.
+  
+**Check the Generated Texts/Logic**: After the script completes, check the `Data/SD-100/Text/` and `Data/SD-100/Logic/`folder. You should find the generated `.json` files. The filenames typically indicate the specific parameters (`m`, `n`, `d`) used during generation. For example, a file named `n5_m4_d144.json` indicates that it was generated with `n=5`, `m=4`, and `domain_size=(12,12)`.
 
 ## Citation
-
-This code is used to generate rooms for the [RoomSpace](https://arxiv.org/pdf/2405.15064) paper:
-
 ```bibtex
 @article{li2024reframing,
   title={Reframing Spatial Reasoning Evaluation in Language Models: A Real-World Simulation Benchmark for Qualitative Reasoning},

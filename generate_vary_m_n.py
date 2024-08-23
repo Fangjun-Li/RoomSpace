@@ -250,7 +250,7 @@ def describe_object_room_tpp(item, asset_mapping, boundingBox_mapping, room_dime
     	pure_object_description += f"{object_name}, "
         
     	if 'painting' in object_name: 
-            pos_text_tpp = f"in the {spatial_description} of the the room" #at coordinate ({x}, {y}, {z})
+            pos_text_tpp = f"in the {spatial_description} of the room" #at coordinate ({x}, {y}, {z})
             description_tpp += f"{object_name} {pos_text_tpp}, "
     	else:
             pos_text_tpp = f"placed in the {spatial_description}" #at coordinate ({x}, {y}, {z})
